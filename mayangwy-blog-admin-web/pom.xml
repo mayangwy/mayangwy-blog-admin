@@ -27,7 +27,7 @@
                 <version>3.2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>${project.parent.artifactId}</warName>
+                    <warName>${war.name}</warName>
                 </configuration>
             </plugin>
         </plugins>
