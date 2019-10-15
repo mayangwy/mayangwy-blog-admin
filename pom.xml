@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		
+	<modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.mayangwy</groupId>
+    <artifactId>mayangwy-blog-admin</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+	<modules>
+        <module>mayangwy-blog-admin-common</module>
+        <module>mayangwy-blog-admin-dao</module>
+        <module>mayangwy-blog-admin-service</module>
+        <module>mayangwy-blog-admin-web</module>
+    </modules>
+
+    <properties>
+        <blog-admin-version>1.0.0-SNAPSHOT</blog-admin-version>
+
+        <!-- maven编译参数 -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+        <maven.compiler.skipTests>true</maven.compiler.skipTests>
+
+        <!-- 文件拷贝时的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.mayangwy</groupId>
+                <artifactId>mayangwy-blog-admin-controller</artifactId>
+                <version>${blog-admin-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mayangwy</groupId>
+                <artifactId>mayangwy-blog-admin-service</artifactId>
+                <version>${blog-admin-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mayangwy</groupId>
+                <artifactId>mayangwy-blog-admin-dao</artifactId>
+                <version>${blog-admin-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mayangwy</groupId>
+                <artifactId>mayangwy-blog-admin-common</artifactId>
+                <version>${blog-admin-version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <developers>
+        <developer>
+            <id>mayangwy</id>
+            <name>mayang</name>
+            <roles>
+                <role>leader</role>
+            </roles>
+            <email>1505054490@qq.com</email>
+        </developer>
+    </developers>
+
+</project>
