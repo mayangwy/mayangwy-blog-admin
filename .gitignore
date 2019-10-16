@@ -1,5 +1,10 @@
+#忽略idea文件
 *.iml
 .idea
-target
 
+#忽略编译文件
+target
 classes
+
+#忽略test文件
+test
