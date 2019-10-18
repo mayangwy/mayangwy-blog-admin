@@ -43,9 +43,9 @@ public class WebStartListener implements ServletContextListener {
             try {
                 DruidDataSourceBuilder.createDataSource(dataSourceConfigMap);
                 DataSource dataGet = DruidDataSourceBuilder.getDataSource();
-                log.info(dataGet.getConnection().toString());
+                //log.info(dataGet.getConnection().toString());
             } catch (Exception e) {
-                e.printStackTrace();
+                System.exit(1);
             }
         } catch (IOException e) {
             log.error(e.getMessage(), e);
