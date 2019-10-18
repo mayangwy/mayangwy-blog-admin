@@ -1,5 +1,7 @@
 package org.mayangwy.blog.admin.web;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,12 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "TestServlet", urlPatterns = {"/"})
+@Slf4j
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        log.info("infoinfo");
+        log.error("errorerror");
+        request.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(request, response);
     }
 }
