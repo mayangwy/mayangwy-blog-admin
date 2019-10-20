@@ -18,6 +18,7 @@ public class WebStartListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        System.exit(1);
         //logger.info("123321123321");
         /*ServletRegistration.Dynamic testQuanServlet = sce.getServletContext().addServlet("TestQuanServlet", TestQuanServlet.class);
         testQuanServlet.addMapping("/quan");
@@ -25,9 +26,30 @@ public class WebStartListener implements ServletContextListener {
         testMLServlet.addMapping("/quan/");*/
         InputStream inputStream = sce.getServletContext().getResourceAsStream("WEB-INF/classes/application.properties");
         //InputStream inputStream = sce.getServletContext().getResourceAsStream("/application.properties");
+        Properties pp = new Properties();
+        try {
+            InputStream inputStream2 = this.getClass().getClassLoader().getResourceAsStream("application.properties");
+            pp.load(inputStream2);
+            inputStream2.close();
+            System.out.println(pp.getProperty("jdbc.config.url"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Properties pp2 = new Properties();
+        try {
+            InputStream inputStream3 = this.getClass().getClassLoader().getResourceAsStream("a.properties");
+            pp2.load(inputStream3);
+            inputStream3.close();
+            System.out.println(pp2.getProperty("a"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Thread : " + Thread.currentThread().getId());
+        System.out.println("aaaDFGbbb".indexOf("DFG"));
         try {
             Properties properties = new Properties();
             properties.load(inputStream);
+            inputStream.close();
             Set<String> sets = properties.stringPropertyNames();
             log.info("---------- properties文件信息打印开始 ----------");
             sets.forEach(item -> {
