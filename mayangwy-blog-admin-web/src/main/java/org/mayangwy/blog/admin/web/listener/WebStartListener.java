@@ -30,6 +30,12 @@ public class WebStartListener implements ServletContextListener {
         //是否可以扫描包，判断注解是否加载，spring扫描过的类是否执行静态代码块
         //Class.forName("org.mayangwy.blog.admin.common.jdbc.QueryRunnerBuilder");
         //Class.forName("org.mayangwy.blog.admin.dao.DaoFactory");
+
+        try {
+            Class.forName("org.mayangwy.blog.admin.service.ServiceFactory");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
