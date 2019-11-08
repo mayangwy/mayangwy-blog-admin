@@ -37,6 +37,9 @@
         <servlet.version>4.0.0</servlet.version>
         <jsp.version>2.0</jsp.version>
         <jdbc.version>5.1.48</jdbc.version>
+        <apache.commons.lang3.version>3.9</apache.commons.lang3.version>
+        <apache.commons.dbutils.version>1.7</apache.commons.dbutils.version>
+        <guava.version>28.1-jre</guava.version>
     </properties>
 
     <!-- 公共依赖定义 -->
@@ -103,7 +106,7 @@
         </dependency>
     </dependencies>
 
-    <!-- 子项目依赖版本号管理 -->
+    <!-- 项目依赖版本号管理 -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -149,6 +152,25 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${jdbc.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${apache.commons.lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-dbutils</groupId>
+                <artifactId>commons-dbutils</artifactId>
+                <version>${apache.commons.dbutils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
