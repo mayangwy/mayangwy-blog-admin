@@ -17,7 +17,7 @@ import java.util.Properties;
 public class DruidDataSourceBuilder {
 
     private static String key_prefix = "jdbc.config.url.";
-    private static DataSource dataSource = null;
+    private static volatile DataSource dataSource = null;
 
     private static final Map<String, String> dataSourceMap = Maps.newHashMap();
 
@@ -44,7 +44,7 @@ public class DruidDataSourceBuilder {
     }
 
     private DruidDataSourceBuilder() throws Exception {
-        throw new Exception("this class[DruidDataSourceBuilder] is not create instance !!!");
+        throw new Exception("this class[org.mayangwy.blog.admin.common.jdbc.DruidDataSourceBuilder] is not create instance !!!");
     }
 
     private static void createDataSource() {
@@ -59,8 +59,9 @@ public class DruidDataSourceBuilder {
 
                         properties.forEach((k,v) -> {
                             String keyStr = (String) k;
-                            if(k.toString().startsWith(key_prefix)){
-                                dataSourceMap.put(StringUtils.removeStart(keyStr, key_prefix), (String) v);
+                            String valueStr = (String) v;
+                            if(StringUtils.startsWith(keyStr, key_prefix)){
+                                dataSourceMap.put(StringUtils.removeStart(keyStr, key_prefix), valueStr);
                             }
                         });
 
