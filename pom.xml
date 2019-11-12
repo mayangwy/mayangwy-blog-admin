@@ -40,6 +40,7 @@
         <apache.commons.lang3.version>3.9</apache.commons.lang3.version>
         <apache.commons.dbutils.version>1.7</apache.commons.dbutils.version>
         <guava.version>28.1-jre</guava.version>
+        <hutool.version>5.0.5</hutool.version>
     </properties>
 
     <!-- 公共依赖定义 -->
@@ -170,6 +171,13 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
 
 
         </dependencies>
