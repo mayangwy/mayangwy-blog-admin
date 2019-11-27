@@ -3,12 +3,20 @@ package org.mayangwy.blog.admin.dao;
 import org.apache.commons.dbutils.QueryRunner;
 import org.mayangwy.blog.admin.common.jdbc.QueryRunnerBuilder;
 
-public class BaseDao {
+import java.util.List;
 
-    protected QueryRunner queryRunner;
+public class BaseDao<T> implements IBaseDao<T> {
 
-    {
-        queryRunner = QueryRunnerBuilder.getQueryRunner();
+    protected QueryRunner queryRunner = QueryRunnerBuilder.getQueryRunner();
+
+
+    @Override
+    public int insert(T o) {
+        return 0;
     }
 
+    @Override
+    public int insert(List<T> list) {
+        return 0;
+    }
 }
