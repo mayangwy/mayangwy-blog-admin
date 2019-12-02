@@ -17,7 +17,7 @@ import java.util.Map;
 public class DruidDataSourceBuilder {
 
     private static String key_prefix = "jdbc.config.";
-    private static volatile DruidDataSource druidDataSource = null;
+    private static DruidDataSource druidDataSource = null;//项目启动前完成初始化，不用加volatile
 
     private static final Map<String, String> dataSourceMap = Maps.newHashMap();
 
@@ -53,11 +53,6 @@ public class DruidDataSourceBuilder {
             synchronized (DruidDataSourceBuilder.class) {
                 if (druidDataSource == null) {
                     try {
-                        /*Properties properties = new Properties();
-                        InputStream inputStream = DruidDataSourceBuilder.class.getClassLoader().getResourceAsStream("application.properties");
-                        properties.load(inputStream);
-                        inputStream.close();*/
-
                         Props.getProp("application.properties").forEach((k, v) -> {
                             String keyStr = (String) k;
                             String valueStr = (String) v;
@@ -66,7 +61,7 @@ public class DruidDataSourceBuilder {
                             }
                         });
 
-                        druidDataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(dataSourceMap);//这一步是否可以导致不用加volatile
+                        druidDataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(dataSourceMap);
                         druidDataSource.init();
                     } catch (Exception e) {
                         e.printStackTrace();
