@@ -36,11 +36,12 @@
         <!-- 依赖包版本 -->
         <servlet.version>4.0.0</servlet.version>
         <jsp.version>2.0</jsp.version>
-        <jdbc.version>5.1.48</jdbc.version>
+        <jdbc.version>8.0.18</jdbc.version>
         <apache.commons.lang3.version>3.9</apache.commons.lang3.version>
         <apache.commons.dbutils.version>1.7</apache.commons.dbutils.version>
         <guava.version>28.1-jre</guava.version>
         <hutool.version>5.0.5</hutool.version>
+        <apache.beanutils.version>1.9.4</apache.beanutils.version>
     </properties>
 
     <!-- 公共依赖定义 -->
@@ -178,7 +179,11 @@
                 <version>${hutool.version}</version>
             </dependency>
 
-
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${apache.beanutils.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

@@ -1,14 +1,14 @@
 package org.mayangwy.blog.admin.common.jdbc;
 
+import cn.hutool.setting.dialect.Props;
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.sql.DataSource;
-import java.io.InputStream;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * 创建druid数据源类
@@ -16,8 +16,8 @@ import java.util.Properties;
 @Slf4j
 public class DruidDataSourceBuilder {
 
-    private static String key_prefix = "jdbc.config.url.";
-    private static volatile DataSource dataSource = null;
+    private static String key_prefix = "jdbc.config.";
+    private static volatile DruidDataSource druidDataSource = null;
 
     private static final Map<String, String> dataSourceMap = Maps.newHashMap();
 
@@ -27,9 +27,10 @@ public class DruidDataSourceBuilder {
         dataSourceMap.put("username", "root");
         dataSourceMap.put("password", "112233");
 
-        dataSourceMap.put("initialSize", "0");
+        dataSourceMap.put("initialSize", "5");
         dataSourceMap.put("minIdle", "5");
         dataSourceMap.put("maxActive", "20");
+        dataSourceMap.put("inited", "true");
 
         dataSourceMap.put("maxWait", "60000");
 
@@ -48,24 +49,25 @@ public class DruidDataSourceBuilder {
     }
 
     private static void createDataSource() {
-        if(dataSource == null){
-            synchronized(DruidDataSourceBuilder.class){
-                if(dataSource == null){
+        if (druidDataSource == null) {
+            synchronized (DruidDataSourceBuilder.class) {
+                if (druidDataSource == null) {
                     try {
-                        Properties properties = new Properties();
+                        /*Properties properties = new Properties();
                         InputStream inputStream = DruidDataSourceBuilder.class.getClassLoader().getResourceAsStream("application.properties");
                         properties.load(inputStream);
-                        inputStream.close();
+                        inputStream.close();*/
 
-                        properties.forEach((k,v) -> {
+                        Props.getProp("application.properties").forEach((k, v) -> {
                             String keyStr = (String) k;
                             String valueStr = (String) v;
-                            if(StringUtils.startsWith(keyStr, key_prefix)){
+                            if (StringUtils.startsWith(keyStr, key_prefix)) {
                                 dataSourceMap.put(StringUtils.removeStart(keyStr, key_prefix), valueStr);
                             }
                         });
 
-                        dataSource = DruidDataSourceFactory.createDataSource(dataSourceMap);//这一步是否可以导致不用加volatile
+                        druidDataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(dataSourceMap);//这一步是否可以导致不用加volatile
+                        druidDataSource.init();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -74,11 +76,11 @@ public class DruidDataSourceBuilder {
         }
     }
 
-    static DataSource getDataSource(){
-        if(dataSource == null){
+    public static DataSource getDataSource() {
+        if (druidDataSource == null) {
             createDataSource();
         }
-        return dataSource;
+        return druidDataSource;
     }
 
 }

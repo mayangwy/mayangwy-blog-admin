@@ -1,22 +1,14 @@
 package org.mayangwy.blog.admin.dao;
 
-import org.apache.commons.dbutils.QueryRunner;
-import org.mayangwy.blog.admin.common.jdbc.QueryRunnerBuilder;
+import cn.hutool.core.lang.Singleton;
 
-import java.util.List;
+public class BaseDao<T, ID> implements IBaseDao<T, ID> {
 
-public class BaseDao<T> implements IBaseDao<T> {
-
-    protected QueryRunner queryRunner = QueryRunnerBuilder.getQueryRunner();
-
+    private DaoTemplate daoTemplate = Singleton.get(DaoTemplate.class);
 
     @Override
-    public int insert(T o) {
-        return 0;
+    public ID insert(T t) {
+       return (ID) daoTemplate.insert(t);
     }
 
-    @Override
-    public int insert(List<T> list) {
-        return 0;
-    }
 }

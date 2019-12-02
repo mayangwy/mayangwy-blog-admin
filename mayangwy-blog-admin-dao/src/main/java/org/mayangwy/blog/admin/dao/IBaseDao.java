@@ -2,10 +2,8 @@ package org.mayangwy.blog.admin.dao;
 
 import java.util.List;
 
-public interface IBaseDao<T> {
+public interface IBaseDao<T, ID> {
 
-    int insert(T t);
-
-    int insert(List<T> list);
+    ID insert(T t);
 
 }

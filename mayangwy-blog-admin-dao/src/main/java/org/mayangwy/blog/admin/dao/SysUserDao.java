@@ -1,6 +1,8 @@
 package org.mayangwy.blog.admin.dao;
 
-public class SysUserDao extends BaseDao {
+import org.mayangwy.blog.admin.dao.po.SysUser;
+
+public class SysUserDao extends BaseDao<SysUser, Long> {
 
 
 
