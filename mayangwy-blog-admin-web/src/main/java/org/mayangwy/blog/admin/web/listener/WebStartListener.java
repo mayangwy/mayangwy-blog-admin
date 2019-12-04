@@ -24,18 +24,6 @@ public class WebStartListener implements ServletContextListener {
         testQuanServlet.addMapping("/quan");
         ServletRegistration.Dynamic testMLServlet = sce.getServletContext().addServlet("TestMLServlet", TestMLServlet.class);
         testMLServlet.addMapping("/quan/");*/
-        //InputStream inputStream = sce.getServletContext().getResourceAsStream("WEB-INF/classes/application.properties");
-
-        //只需要加载ServiceFactory即可
-        //是否可以扫描包，判断注解是否加载，spring扫描过的类是否执行静态代码块
-        //Class.forName("org.mayangwy.blog.admin.common.jdbc.QueryRunnerBuilder");
-        //Class.forName("org.mayangwy.blog.admin.dao.DaoFactory");
-
-        try {
-            Class.forName("org.mayangwy.blog.admin.service.ServiceFactory");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

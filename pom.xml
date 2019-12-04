@@ -40,8 +40,9 @@
         <apache.commons.lang3.version>3.9</apache.commons.lang3.version>
         <apache.commons.dbutils.version>1.7</apache.commons.dbutils.version>
         <guava.version>28.1-jre</guava.version>
-        <hutool.version>5.0.5</hutool.version>
+        <hutool.version>5.0.6</hutool.version>
         <apache.beanutils.version>1.9.4</apache.beanutils.version>
+        <fastjson.version>1.2.62</fastjson.version>
     </properties>
 
     <!-- 公共依赖定义 -->
@@ -183,6 +184,12 @@
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
                 <version>${apache.beanutils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
 
         </dependencies>

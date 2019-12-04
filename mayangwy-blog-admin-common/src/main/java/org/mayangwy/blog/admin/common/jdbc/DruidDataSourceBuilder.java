@@ -30,7 +30,6 @@ public class DruidDataSourceBuilder {
         dataSourceMap.put("initialSize", "5");
         dataSourceMap.put("minIdle", "5");
         dataSourceMap.put("maxActive", "20");
-        dataSourceMap.put("inited", "true");
 
         dataSourceMap.put("maxWait", "60000");
 
