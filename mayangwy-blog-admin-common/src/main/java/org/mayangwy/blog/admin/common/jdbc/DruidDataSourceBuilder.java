@@ -61,6 +61,7 @@ public class DruidDataSourceBuilder {
                         });
 
                         druidDataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(dataSourceMap);
+                        druidDataSource.setFilters("stat");
                         druidDataSource.init();
                     } catch (Exception e) {
                         e.printStackTrace();

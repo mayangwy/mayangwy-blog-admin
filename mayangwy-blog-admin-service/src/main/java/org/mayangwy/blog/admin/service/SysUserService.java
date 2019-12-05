@@ -2,6 +2,7 @@ package org.mayangwy.blog.admin.service;
 
 import cn.hutool.core.lang.Singleton;
 import cn.hutool.core.util.ObjectUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.mayangwy.blog.admin.common.enums.IsDelEnum;
 import org.mayangwy.blog.admin.common.jdbc.DruidDataSourceBuilder;
 import org.mayangwy.blog.admin.dao.SysUserDao;
@@ -12,6 +13,7 @@ import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 public class SysUserService {
 
     private SysUserDao sysUserDao = Singleton.get(SysUserDao.class);
@@ -44,7 +46,13 @@ public class SysUserService {
     }
 
     public List<SysUser> find(SysUser sysUser){
-        return sysUserDao.find(null, sysUser);
+        long start = System.currentTimeMillis();
+
+        List<SysUser> sysUsers = sysUserDao.find(null, sysUser);
+
+        log.info("SysUserService.find {}", System.currentTimeMillis() - start);
+
+        return sysUsers;
     }
 
 }

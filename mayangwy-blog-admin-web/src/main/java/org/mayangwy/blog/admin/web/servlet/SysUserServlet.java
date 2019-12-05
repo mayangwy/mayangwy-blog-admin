@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(name = "SysUserServlet", urlPatterns = {"/sys/user/insert", "/sys/user/update", "/sys/user/delete", "/sys/user/find"}, loadOnStartup = 1)
+@WebServlet(name = "SysUserServlet", urlPatterns = {"/sys/user/*"}, loadOnStartup = 1)
 @Slf4j
 public class SysUserServlet extends HttpServlet {
 
@@ -35,12 +35,12 @@ public class SysUserServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
         String body = ServletUtil.getBody(request);
         SysUser sysUser = JSON.parseObject(body, SysUser.class);
-        String servletPath = request.getServletPath();
+        String servletPath = request.getRequestURI();
+        log.info(request.getContextPath());
+        log.info(request.getServletPath());
+        log.info(request.getRequestURL().toString());
         String endPath = StrUtil.removePrefix(servletPath, URL_PRE);
 
         Map<String, Object> resultMap = Maps.newLinkedHashMap();
