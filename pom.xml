@@ -43,6 +43,8 @@
         <hutool.version>5.0.6</hutool.version>
         <apache.beanutils.version>1.9.4</apache.beanutils.version>
         <fastjson.version>1.2.62</fastjson.version>
+        <tomcat.util.version>9.0.30</tomcat.util.version>
+        <java.sizeof.version>0.0.5</java.sizeof.version>
     </properties>
 
     <!-- 公共依赖定义 -->
@@ -190,6 +192,18 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-util</artifactId>
+                <version>${tomcat.util.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.carrotsearch</groupId>
+                <artifactId>java-sizeof</artifactId>
+                <version>${java.sizeof.version}</version>
             </dependency>
 
         </dependencies>
