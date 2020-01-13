@@ -37,7 +37,7 @@ public class DruidDataSourceBuilder {
 
         dataSourceMap.put("minEvictableIdleTimeMillis", "300000");
 
-        dataSourceMap.put("validationQuery", "SELECT 'x' FROM DUAL");
+        dataSourceMap.put("validationQuery", "SELECT 1");
         dataSourceMap.put("testWhileIdle", "true");
         dataSourceMap.put("testOnBorrow", "false");
         dataSourceMap.put("testOnReturn", "false");

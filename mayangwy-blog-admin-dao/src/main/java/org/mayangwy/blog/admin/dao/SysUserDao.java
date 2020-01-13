@@ -109,6 +109,38 @@ public class SysUserDao {
         }
     }
 
+    public Integer updateTest(Connection connection){
+        String sql = "UPDATE MED_INSUR_APPROVAL SET MODIFIED_AT = '2020-01-08 15:27:00' WHERE MED_INSUR_APPROVAL_ID = 1";
+        try {
+            Integer result;
+            if(connection == null){
+                result = queryRunner.update(sql);
+            } else {
+                result = queryRunner.update(connection, sql);
+            }
+
+            return result;
+        } catch (SQLException e) {
+            log.error("updateTest更新失败", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void findTest(Connection connection){
+        String sql = "SELECT * FROM MED_INSUR_APPROVAL";
+        try {
+            if(connection == null){
+                queryRunner.query(sql, new BeanListHandler<>(SysUser.class));
+            } else {
+                queryRunner.query(connection, sql, new BeanListHandler<>(SysUser.class));
+            }
+            System.out.println();
+        } catch (SQLException e) {
+            log.error("updateTest更新失败", e);
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<SysUser> find(Connection connection, SysUser sysUser){
         String sqlTemplate = "SELECT ID, USER_NAME AS userName, PASSWORD, NICK_NAME AS nickName, EMAIL, MOBILE, " +
                 "ID_CARD_NO AS idCardNo, DEPARTMENT_ID AS departmentId, CREATE_USER_ID AS createUserId, " +
