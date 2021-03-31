@@ -39,7 +39,7 @@
         <jdbc.version>8.0.18</jdbc.version>
         <apache.commons.lang3.version>3.9</apache.commons.lang3.version>
         <apache.commons.dbutils.version>1.7</apache.commons.dbutils.version>
-        <guava.version>28.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <hutool.version>5.0.6</hutool.version>
         <apache.beanutils.version>1.9.4</apache.beanutils.version>
         <fastjson.version>1.2.62</fastjson.version>
