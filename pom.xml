@@ -42,7 +42,7 @@
         <guava.version>28.1-jre</guava.version>
         <hutool.version>5.0.6</hutool.version>
         <apache.beanutils.version>1.9.4</apache.beanutils.version>
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <tomcat.util.version>9.0.30</tomcat.util.version>
         <java.sizeof.version>0.0.5</java.sizeof.version>
     </properties>
